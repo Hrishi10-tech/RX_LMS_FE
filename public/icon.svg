@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Lab Management System">
+  <rect width="512" height="512" rx="96" fill="#1a1a2e"/>
+  <!-- Flask: reads as "lab" at 32px where fine detail disappears. -->
+  <path d="M196 108h120v14l-8 6v62l84 148a56 56 0 0 1-48 84H172a56 56 0 0 1-48-84l84-148v-62l-8-6z"
+        fill="none" stroke="#7c3aed" stroke-width="22" stroke-linejoin="round"/>
+  <path d="M162 300h188l30 52a34 34 0 0 1-29 52H161a34 34 0 0 1-29-52z" fill="#7c3aed"/>
+</svg>

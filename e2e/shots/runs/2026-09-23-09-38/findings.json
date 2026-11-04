@@ -1,0 +1,114 @@
+[
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "manager",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "manager",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "finance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "finance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  }
+]

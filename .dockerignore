@@ -1,0 +1,19 @@
+# Keep the Docker build context small + secret-free.
+
+node_modules
+dist
+*.tsbuildinfo
+
+.env
+.env.*
+!.env.example
+
+# Local tooling / IDE
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+
+# Logs
+*.log

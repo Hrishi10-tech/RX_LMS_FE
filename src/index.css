@@ -1,0 +1,590 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+ * Theme tokens.
+ *
+ * Two kinds of custom property live here, and the difference matters:
+ *
+ *   --c-*   COLOUR CHANNELS, as space-separated RGB triplets ("124 58 237").
+ *           tailwind.config.js wraps each one as
+ *           `rgb(var(--c-x) / <alpha-value>)`, which is what keeps opacity
+ *           modifiers working: `bg-brand/10` compiles to
+ *           `rgb(var(--c-brand) / 0.1)`. Hand Tailwind a hex through a
+ *           variable instead and every `/10` in the codebase silently breaks,
+ *           because `#7c3aed / 0.1` is not a colour.
+ *
+ *   everything else — gradients, shadows, easings, the glassy input fills —
+ *           composite values used directly in CSS below, where a triplet
+ *           would be no help.
+ *
+ * Dark mode swaps the channels; the components never change. `darkMode: 'class'`
+ * in the Tailwind config means `.dark` on <html> is the switch (see useTheme).
+ * ------------------------------------------------------------------------- */
+:root {
+  /* Surfaces */
+  --c-page:       246 247 251;
+  --c-card:       255 255 255;
+  --c-surface:    249 250 251;
+  --c-hover:      243 244 246;
+  --c-zebra:      250 250 250;   /* alternate table row */
+  --c-expanded:   248 250 252;
+
+  /* Borders — `line` is the standard hairline, `line-soft` the fainter one
+     used between table rows. */
+  --c-line:       229 231 235;
+  --c-line-soft:  241 245 249;
+
+  /* Text ramp, strongest to weakest */
+  /* Text ramp, WCAG AA on every surface each tier actually lands on.
+     The old ramp ended at #9ca3af, which is 2.54:1 on card and 2.43:1 on the
+     zebra row — the weakest tier carries timestamps, counts and empty states,
+     so it was the most-used failing colour in the app.
+     The binding constraint is bg-hover (#f3f4f6), a hovered table row: even
+     gray-500 reaches only 4.39:1 there, so `faint` has to be gray-600. That
+     pushes the whole ramp down a step and compresses it. The hierarchy still
+     reads, but it is deliberately less airy than the guide's — legibility
+     first. */
+  --c-ink:        17 24 39;
+  --c-secondary:  31 41 55;
+  --c-muted:      55 65 81;
+  --c-faint:      75 85 99;
+
+  /* Brand ramp.
+     `--c-brand` does double duty: it is the fill under `bg-brand` AND the
+     colour of `text-brand`. Those two want different values on a dark ground
+     (a fill needs to stay dark enough for white text; text needs to be light
+     enough to read). It works out because a primary button is
+     `bg-brand text-white`, and that pair is painted by --brand-gradient
+     below — a background-image, which covers the background-colour entirely.
+     So the token value only ever shows through on text, borders, rings and
+     low-opacity tints, all of which want the lighter value in dark mode. */
+  --c-brand-50:   245 243 255;
+  --c-brand-100:  237 233 254;
+  --c-brand-200:  221 214 254;
+  --c-brand-light:192 132 252;
+  --c-brand:      124 58 237;
+  --c-brand-600:  147 51 234;
+  --c-brand-dark: 109 40 217;
+  --c-brand-700:  109 40 217;
+
+  /* Brand as a FILL rather than as text. `--c-brand` lightens in dark so that
+     `text-brand` reads on a dark page; a button filled with that same value
+     then carries its label at 2.64:1. The gradient rule below rescues
+     `.bg-brand.text-white`, but anything filled with bg-brand that is NOT
+     white-texted gets the raw token — which is how 29 controls ended up
+     unreadable in both themes. These two do not invert. */
+  --c-brand-fill:       124 58 237;
+  --c-brand-fill-hover: 109 40 217;
+
+  /* The signature gradient: always 135deg, always deep violet -> lighter
+     purple. Used on primary actions, the active nav item and the login panel.
+     
+     The end stop is purple-600 (#9333ea) rather than purple-500 (#a855f7).
+     Everything this gradient goes under carries small bold WHITE text — 10-13px
+     nav labels, chips, button captions — and white on #a855f7 is 3.96:1, under
+     the 4.5:1 those sizes need. #9333ea keeps the violet->purple read and takes
+     white to 5.38:1. It is deliberately NOT theme-dependent: white-on-gradient
+     is already the strongest pairing in either theme. */
+  --brand-gradient: linear-gradient(135deg, #7c3aed, #9333ea);
+  --brand-gradient-rich: linear-gradient(135deg, #6d28d9 0%, #7c3aed 40%, #a855f7 100%);
+
+  /* Elevation is purple, not grey. A resting card is barely-there neutral;
+     anything interactive or branded casts a coloured glow instead. */
+  --shadow-card: 0 2px 8px rgba(16, 24, 40, 0.04);
+  --shadow-brand: 0 4px 12px rgba(124, 58, 237, 0.30);
+  --shadow-brand-lift: 0 10px 30px rgba(124, 58, 237, 0.32);
+  --shadow-brand-subtle: 0 2px 8px rgba(124, 58, 237, 0.08);
+  --focus-ring: 0 0 0 3px rgba(168, 85, 247, 0.30);
+
+  /* Accents used directly in CSS (focus outline, scrollbar thumb, soft-tile
+     icon). Derived from the channels above so they follow the theme — these
+     were hardcoded hexes, which is why they had to be re-derived when the
+     tokens moved to channels. */
+  --accent: rgb(var(--c-brand-light));
+  --accent-strong: rgb(var(--c-brand));
+
+  /* The soft icon tile and the loading shimmer are pale violet washes. On a
+     navy card a pale wash is a hole, so both are variables. */
+  --tile-gradient: linear-gradient(135deg, #f3e8ff, #ede9fe);
+  --shimmer-gradient: linear-gradient(90deg, #f3f4f6 25%, #ede9fe 50%, #f3f4f6 75%);
+
+  /* Glassy inputs */
+  --input-border: #d6b4e8;
+  --input-bg: rgba(255, 255, 255, 0.6);
+  --input-bg-focus: rgba(255, 255, 255, 0.85);
+  --scrollbar-track: #f3f4f6;
+
+  /* Motion. Fast to start, gentle settle. */
+  --ease-premium: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-hero: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Deep navy-purple, never flat grey — that is what keeps the dark theme
+   feeling like the same product rather than a generic inversion. */
+.dark {
+  --c-page:       15 15 17;
+  --c-card:       26 26 46;
+  --c-surface:    30 30 48;
+  --c-hover:      42 42 61;
+  --c-zebra:      30 30 48;
+  --c-expanded:   34 34 56;
+
+  --c-line:       46 46 66;
+  --c-line-soft:  46 46 66;
+
+  /* The text ramp shifts up, not just inverts: what was `ink` becomes a soft
+     off-white rather than pure white, which is easier to read at length. */
+  --c-ink:        229 231 235;
+  --c-secondary:  209 213 219;
+  /* Lifted a step so it stays a clear tier above the new `faint`. */
+  --c-muted:      176 183 196;
+  /* Retuned against bg-hover (#2a2a3d), the lightest ground a timestamp lands
+     on. The previous value (#7f8998) was tuned against the card and zebra row
+     only and reaches just 3.96:1 on a hovered row, so it failed exactly where
+     a cursor is. #949dac clears 4.5:1 on every dark surface. */
+  --c-faint:      148 157 172;
+
+  /* Brand, retuned for a dark ground. The pale tile backgrounds invert into
+     dark violets (a #ede9fe tile on a #1a1a2e card would be a hole in the
+     page), and the mid/dark stops move LIGHTER, because on dark they are read
+     as text and icons rather than as fills. #7c3aed manages only ~3:1 against
+     the card; #a855f7 reaches ~6.5:1. */
+  --c-brand-50:   30 27 58;
+  --c-brand-100:  42 35 80;
+  --c-brand-200:  63 53 104;
+  --c-brand-light:216 180 254;
+  /* purple-400, not purple-500. The design language's dark accent is #a855f7,
+     which reaches only 4.31:1 against the card — under AA for the 13px
+     wordmark and links that use `text-brand`. #c084fc reaches 6.5:1 and is
+     still unmistakably the brand. Deliberate deviation, same reasoning as the
+     gradient's end stop. */
+  --c-brand:      192 132 252;
+  --c-brand-600:  216 180 254;
+  --c-brand-dark: 216 180 254;
+  --c-brand-700:  233 213 255;
+
+  /* Deliberately NOT inverted — see the note in :root. */
+  --c-brand-fill:       124 58 237;
+  --c-brand-fill-hover: 109 40 217;
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.30);
+
+  --tile-gradient: linear-gradient(135deg, rgba(168, 85, 247, 0.20), rgba(124, 58, 237, 0.12));
+  --shimmer-gradient: linear-gradient(90deg, rgb(30 30 48) 25%, rgb(58 48 100) 50%, rgb(30 30 48) 75%);
+
+  --input-border: #4a3a5e;
+  --input-bg: rgba(30, 30, 48, 0.8);
+  --input-bg-focus: rgba(30, 30, 48, 0.95);
+  --scrollbar-track: #1a1a2e;
+}
+
+@layer base {
+  html {
+    font-size: 13px;
+  }
+  @media (min-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  body {
+    font-family: 'Poppins', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Micro-label: table headers and eyebrow labels. The tables already used
+     11px uppercase; this pins the letter-spacing and weight so every one of
+     them matches instead of drifting per screen. */
+  thead th {
+    letter-spacing: 0.6px;
+  }
+
+  /* Focus is expressed in the brand colour, like elevation. `:focus-visible`
+     so it fires for keyboard users and not on a mouse click.
+     `outline` rather than a box-shadow ring on purpose: an outline follows the
+     element's own border-radius, so a pill or an avatar keeps its shape while
+     focused, and it can't be clipped by an ancestor's `overflow: hidden`. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * Motion.
+ *
+ * Pure CSS on purpose — this project has no animation library and adding one
+ * to move a few panels would be a dependency for nothing. Entrances run off
+ * a class when the element mounts; exits that need to outlive an unmount
+ * (only the mobile drawer here) transition `transform` on a mounted element
+ * instead, which needs no library either.
+ *
+ * Durations and easings follow the design language: micro-interactions
+ * 0.15-0.25s, entrances 0.3-0.4s.
+ * ------------------------------------------------------------------------- */
+/* A note on `animation-fill-mode: backwards` below.
+ *
+ * Every entrance here ends at the element's NATURAL state (opacity 1,
+ * translateY(0)), so nothing needs to be held after the run — and holding it
+ * is actively harmful. `both` leaves a `transform` on the element forever,
+ * and a non-none transform makes that element a containing block for
+ * `position: fixed` descendants. With the route wrapper animated, that
+ * re-anchored every one of the ~90 modals and every ColumnFilter popup to the
+ * content area instead of the viewport: a modal opened on Fixed Assets came up
+ * offset and clipped, with a backdrop that covered only part of the page.
+ *
+ * `backwards` still applies the FROM frame before the animation starts (so
+ * there's no flash of un-animated content, and a staggered row stays hidden
+ * through its delay), then drops back to the natural state on completion.
+ */
+@layer utilities {
+  @keyframes enter-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .enter-up { animation: enter-up 0.4s var(--ease-premium) backwards; }
+
+  @keyframes enter-up-sm {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .enter-up-sm { animation: enter-up-sm 0.28s var(--ease-premium) backwards; }
+
+  @keyframes modal-in {
+    from { opacity: 0; transform: scale(0.97) translateY(12px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .modal-in { animation: modal-in 0.2s var(--ease-premium) backwards; }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .fade-in { animation: fade-in 0.2s var(--ease-premium) backwards; }
+
+  @keyframes fade-slide-down {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  /* Dropdowns and popovers (column filter, menus). */
+  .fade-slide-down { animation: fade-slide-down 0.2s var(--ease-premium) backwards; }
+
+  @keyframes row-enter {
+    from { opacity: 0; transform: translateY(12px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  /* Staggered list/table rows. The caller sets `--i` to the row index; the
+     delay is capped in the component so a 200-row page doesn't animate for
+     eight seconds. */
+  .row-enter {
+    animation: row-enter 0.25s var(--ease-premium) backwards;
+    animation-delay: calc(var(--i, 0) * 0.04s);
+  }
+
+  @keyframes pop-in {
+    from { opacity: 0; transform: scale(0.35) translateY(10px); }
+    to   { opacity: 1; transform: none; }
+  }
+  /* Celebratory reveal — the sign-in logo badge. Overshoots slightly. */
+  .pop-in { animation: pop-in 0.45s var(--ease-back) backwards; }
+
+  /* ---- The signature loader: bouncing ball on a bar staircase -----------
+   * The design language's app-wide loading indicator. The bars are FIXED at
+   * ascending heights — a right-angle triangle — and the ball hops along,
+   * landing exactly on each bar's top edge.
+   *
+   * All the geometry lives here, in one place, so the component just renders
+   * five bars and a ball; there are no numbers to keep in sync across files.
+   *   5 bars, 6px wide, 8px gap  -> 14px pitch, 56px total travel
+   *   heights 10/18/26/34/42px   -> the staircase
+   *   ball 8px, resting ON a bar means translateY(-height)
+   *
+   * The X and Y animations are SEPARATE ELEMENTS but share one 4s duration,
+   * which is what keeps them locked: at 12.5% the ball is over bar 2 and its
+   * Y stop for bar 2 fires at 12.5% too. An earlier version gave them
+   * different periods (4s traverse, 0.55s bounce) on the reasoning that each
+   * could then be tuned independently — which was simply wrong. Two
+   * animations with different periods drift against each other by
+   * construction, so the ball bounced wherever it happened to be rather than
+   * on the bars.
+   *
+   * X is linear so the traverse is even; Y carries the easing, ease-out on
+   * each rise and ease-in on each fall, so the hops read as gravity.
+   * -------------------------------------------------------------------- */
+  .loader-rig {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 42px;
+  }
+  .loader-bar { width: 6px; border-radius: 9999px; }
+  .loader-bar:nth-child(1) { height: 10px; }
+  .loader-bar:nth-child(2) { height: 18px; }
+  .loader-bar:nth-child(3) { height: 26px; }
+  .loader-bar:nth-child(4) { height: 34px; }
+  .loader-bar:nth-child(5) { height: 42px; }
+
+  /* Horizontal: bar 1 -> bar 5 -> back. Linear, so the ball crosses at a
+     constant rate and each Y stop lands over the right bar. */
+  @keyframes loader-x {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(56px); }
+    100% { transform: translateX(0); }
+  }
+  .loader-x {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 6px;
+    animation: loader-x 4s linear infinite;
+  }
+
+  /* Vertical: a landing on every bar top, an apex between each pair. The
+     apex clears the taller of the two neighbours by 12px so the ball never
+     cuts through a bar. */
+  @keyframes loader-y {
+    0%      { transform: translateY(-10px); animation-timing-function: ease-out; }
+    6.25%   { transform: translateY(-30px); animation-timing-function: ease-in; }
+    12.5%   { transform: translateY(-18px); animation-timing-function: ease-out; }
+    18.75%  { transform: translateY(-38px); animation-timing-function: ease-in; }
+    25%     { transform: translateY(-26px); animation-timing-function: ease-out; }
+    31.25%  { transform: translateY(-46px); animation-timing-function: ease-in; }
+    37.5%   { transform: translateY(-34px); animation-timing-function: ease-out; }
+    43.75%  { transform: translateY(-54px); animation-timing-function: ease-in; }
+    50%     { transform: translateY(-42px); animation-timing-function: ease-out; }
+    56.25%  { transform: translateY(-54px); animation-timing-function: ease-in; }
+    62.5%   { transform: translateY(-34px); animation-timing-function: ease-out; }
+    68.75%  { transform: translateY(-46px); animation-timing-function: ease-in; }
+    75%     { transform: translateY(-26px); animation-timing-function: ease-out; }
+    81.25%  { transform: translateY(-38px); animation-timing-function: ease-in; }
+    87.5%   { transform: translateY(-18px); animation-timing-function: ease-out; }
+    93.75%  { transform: translateY(-30px); animation-timing-function: ease-in; }
+    100%    { transform: translateY(-10px); }
+  }
+  .loader-y {
+    display: block;
+    width: 8px;
+    height: 8px;
+    margin-left: -1px;   /* 8px ball centred over a 6px bar */
+    border-radius: 9999px;
+    animation: loader-y 4s infinite;
+  }
+
+  /* ---- Loading skeleton ------------------------------------------------
+   * A pale sweep travelling left to right across placeholder bars. Used by
+   * DataTable while rows are in flight: the bars sit in the real column
+   * positions, so the layout is already settled when the data lands instead
+   * of snapping into place.
+   *
+   * The gradient is 200% of the element's width and its POSITION is what
+   * animates — cheaper than animating a colour, and it gives the light a
+   * direction. `--shimmer-gradient` carries the theme: pale grey/violet on
+   * light, deep navy/violet on dark.
+   * -------------------------------------------------------------------- */
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+  .shimmer {
+    background-image: var(--shimmer-gradient);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+  }
+
+  /* Hover lift + press feedback for cards and buttons. */
+  .interactive {
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+  .interactive:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-brand-lift);
+  }
+  .interactive:active { transform: scale(0.97); }
+
+
+
+  /* Glassy field. `backdrop-filter` is the frosted part; the translucent fill
+     is what it blurs through. */
+  .input-glass {
+    border: 1px solid var(--input-border);
+    background: var(--input-bg);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(4px);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .input-glass:focus, .input-glass:focus-within {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: var(--focus-ring);
+    background: var(--input-bg-focus);
+  }
+
+  /* Soft icon tile: pale gradient ground + saturated icon + faint glow.
+     Used for stat-card leading icons. The status variants live alongside so a
+     tile can pick up the tone of what it's reporting. */
+  .soft-tile {
+    background: var(--tile-gradient);
+    color: var(--accent-strong);
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.18);
+  }
+
+  /* Live/running status dot. */
+  @keyframes dot-ping {
+    0%        { transform: scale(1); opacity: 0.55; }
+    70%, 100% { transform: scale(2.6); opacity: 0; }
+  }
+  .dot-ping::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: currentColor;
+    animation: dot-ping 1.8s var(--ease-hero) infinite;
+  }
+
+}
+
+/* ---------------------------------------------------------------------------
+ * Primary actions.
+ *
+ * `bg-brand` + `text-white` is this app's primary-action pattern: ~120 buttons,
+ * the active nav item, the login hero, the selected role chips. Rather than
+ * add a class to each of those call sites (and then fight `bg-brand` for the
+ * background), the gradient attaches to the pair itself. One rule, and any
+ * button written the same way later picks it up for free.
+ *
+ * The lift and glow are scoped to <button>/<a> so a static branded surface —
+ * the login panel, a small chip — takes the gradient without also rising off
+ * the page when a cursor crosses it.
+ * ------------------------------------------------------------------------- */
+.bg-brand.text-white {
+  /* background-image, not background-color, so it paints over whatever
+     `bg-brand` (and any `hover:bg-brand-dark`) set underneath. */
+  background-image: var(--brand-gradient);
+}
+
+/* Safety net for the gap that rule leaves.
+   It keys on `.text-white`, so a bg-brand fill labelled any other way never
+   gets the gradient and is painted with the raw token — which in dark mode is
+   purple-400, putting its label at 2.13-2.64:1. That is how 29 controls came
+   to be unreadable in BOTH themes. They now say text-white and are covered
+   above; this rule means the next one that does not is still legible. */
+.dark .bg-brand:not(.text-white) {
+  background-color: rgb(var(--c-brand-fill));
+}
+
+button.bg-brand.text-white,
+a.bg-brand.text-white {
+  box-shadow: var(--shadow-brand);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+button.bg-brand.text-white:hover:not(:disabled),
+a.bg-brand.text-white:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-brand-lift);
+}
+button.bg-brand.text-white:active:not(:disabled),
+a.bg-brand.text-white:active {
+  transform: scale(0.97);
+}
+button.bg-brand.text-white:disabled {
+  box-shadow: none;
+  filter: grayscale(0.35);
+}
+
+/* Secondary/ghost buttons lift too, but stay neutral — no brand glow, so the
+   primary action on a toolbar is still the one that reads as primary. */
+button.bg-white:hover:not(:disabled) {
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06);
+}
+
+/* Nav items keep the resting glow but must not lift — a row in a list that
+   rises when the cursor crosses it reads as a mis-click, and only the ACTIVE
+   item matches the primary-action selector in the first place. */
+nav button.bg-brand.text-white:hover {
+  transform: none;
+  box-shadow: var(--shadow-brand);
+}
+
+/* The vivid magenta hero — the sign-in background, and the only surface that
+   uses it. The design language keeps a second, more saturated gradient for
+   "hero / eye-catching accents" (magenta into violet rather than violet into
+   purple), but specifies it as a flat two- or three-stop ramp. This builds it
+   up in four layers instead, because a single flat ramp across a whole
+   viewport reads as dead space at this size.
+   
+   Layer order below is top-most first, which is how `background-image` stacks:
+     1. texture   hero-texture.svg — 35 generated vector paths: 22 flow lines
+                  crossing the full width, 9 shorter arcs clustered under the
+                  bloom, 4 broad diffuse ribbons. Each has its own curvature,
+                  stroke width and opacity.
+                  This was a repeating-radial-gradient first, which was the
+                  wrong tool: a CSS repeat gives mathematically identical arcs,
+                  evenly spaced, all concentric on one point — it read as
+                  machined rather than organic. Real paths can vary. Generated
+                  from a seeded script so it is reproducible, and
+                  preserveAspectRatio="none" + background-size 100% 100%
+                  stretches it to any viewport.
+     2. bloom     a soft light source in the upper right.
+     3. vignette  darkens the outer edges so the centre holds the eye.
+     4. base      the diagonal ramp: bright magenta top-right -> deep violet
+                  bottom-left. (215deg points toward the lower left, so the
+                  FIRST stop is the top-right corner.)
+   
+   No image assets — it is all gradients, so it costs nothing to load and
+   scales to any viewport. Nothing outside the card carries text, so the
+   bloom's brightest point has no contrast obligation. */
+.bg-hero-vivid {
+  background-color: #7c3aed; /* ground, in case a layer fails to paint */
+  background-image:
+    url('/hero-texture.svg'),
+    radial-gradient(95% 80% at 86% 2%,
+      rgba(255, 106, 255, 0.72) 0%,
+      rgba(255, 106, 255, 0.30) 38%,
+      rgba(255, 106, 255, 0) 70%),
+    radial-gradient(135% 125% at 46% 42%,
+      rgba(58, 5, 82, 0) 55%,
+      rgba(58, 5, 82, 0.26) 100%),
+    linear-gradient(215deg,
+      #ec1ceb 0%,
+      #dc1ce4 18%,
+      #c81fdd 38%,
+      #b021d9 57%,
+      #9c25d8 74%,
+      #8a2ce2 89%,
+      #7c3aed 100%);
+  background-size: 100% 100%, auto, auto, auto;
+  background-repeat: no-repeat;
+}
+
+/* Thin on-brand scrollbar. WebKit/Chromium first, then the standard
+   properties for everything else. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--scrollbar-track);
+}
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--scrollbar-track); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #c084fc, #a855f7);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+}
+
+/* Anyone who has asked their OS to reduce motion gets none of the above. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

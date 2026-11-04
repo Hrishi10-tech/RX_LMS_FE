@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <!-- Installable app. The manifest is what makes the OS label notifications
+         "Lab Management System" instead of the bare origin. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="apple-mobile-web-app-title" content="LMS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Lab Management System</title>
+    <!-- Applies the theme BEFORE first paint.
+         React mounts after the document is parsed, so leaving this to a hook
+         means a dark-preference user gets a full white flash on every load.
+         This is deliberately inline and blocking: it is a few lines, it must
+         run before the body is painted, and a separate request would defeat
+         the point. Kept in sync with hooks/useTheme.ts — same storage key,
+         same 'system' default, same class. Wrapped because localStorage
+         THROWS (not returns null) when site data is blocked. -->
+    <script>
+      (function () {
+        try {
+          var p = localStorage.getItem('theme_preference') || 'system';
+          var dark = p === 'dark' || (p === 'system' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+        } catch (e) { /* site data blocked — fall through to light */ }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

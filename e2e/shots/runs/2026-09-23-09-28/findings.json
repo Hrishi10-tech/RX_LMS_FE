@@ -1,0 +1,681 @@
+[
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "3.63:1 (need 4.5) \"191 req · 34 indent\" rgb(109,40,217) on rgb(245,243,255) [text-[10px] opacity-70 mt-0.5]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "2.99:1 (need 4.5) \"191 req · 32 indent\" rgb(4,120,87) on rgb(236,253,245) [text-[10px] opacity-70 mt-0.5]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "3.62:1 (need 4.5) \"0 req · 2 indent\" rgb(185,28,28) on rgb(254,242,242) [text-[10px] opacity-70 mt-0.5]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "2.89:1 (need 4.5) \"0 req · 0 indent\" rgb(180,83,9) on rgb(255,251,235) [text-[10px] opacity-70 mt-0.5]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "users",
+    "kind": "contrast",
+    "detail": "4.22:1 (need 4.5) \"28\" rgb(124,58,237) on rgb(229,216,251) [px-1.5 py-0.5 rounded-full text-[9px] bg-brand/20 text-brand]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "users",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "lab",
+    "kind": "contrast",
+    "detail": "4.22:1 (need 4.5) \"137\" rgb(124,58,237) on rgb(229,216,251) [px-1.5 py-0.5 rounded-full text-[9px] bg-brand/20 text-brand]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "lab",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "inventory",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "finances",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "history",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "admin",
+    "theme": "light",
+    "screen": "components",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "light",
+    "screen": "users",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "light",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "light",
+    "screen": "history",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "admin",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "manager",
+    "theme": "light",
+    "screen": "dashboard",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "manager",
+    "theme": "light",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "manager",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "manager",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "user",
+    "theme": "light",
+    "screen": "dashboard",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "user",
+    "theme": "light",
+    "screen": "my-components",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "user",
+    "theme": "light",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "user",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "user",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "request-item",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "components",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "lab-items",
+    "kind": "contrast",
+    "detail": "4.22:1 (need 4.5) \"137\" rgb(124,58,237) on rgb(229,216,251) [px-1.5 py-0.5 rounded-full text-[9px] bg-brand/20 text-brand]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "lab-items",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "procurement",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "dashboard",
+    "kind": "contrast",
+    "detail": "1.16:1 (need 4.5) \"= 49,687\" rgb(255,255,255) on rgb(242,235,253) [px-3 py-1 bg-brand/10 rounded-full font-bold text-white]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "components",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "allot",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "request-item",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "lab-items",
+    "kind": "contrast",
+    "detail": "4.22:1 (need 4.5) \"137\" rgb(124,58,237) on rgb(229,216,251) [px-1.5 py-0.5 rounded-full text-[9px] bg-brand/20 text-brand]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "lab-items",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "history",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "inventory",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "finance",
+    "theme": "light",
+    "screen": "inventory-items",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "finance",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "finance",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "light",
+    "screen": "inventory-items",
+    "kind": "contrast",
+    "detail": "3.38:1 (need 4.5) \"Previous\" rgb(17,24,39) on rgb(255,255,255) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.18:1 (need 3) \"Stay Connected\" rgb(17,24,39) on rgb(0,0,0) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "light",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "2.04:1 (need 4.5) \"Message your team in real time — pick a \" rgb(55,65,81) on rgb(0,0,0) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "team-approvals",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "users",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "lab",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "inventory",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "finances",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "history",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "database",
+    "kind": "contrast",
+    "detail": "2.05:1 (need 4.5) \"Off-site Backup\" rgb(229,231,235) on rgb(96,165,250) [text-sm md:text-base font-bold text-ink]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "database",
+    "kind": "contrast",
+    "detail": "1.26:1 (need 4.5) \"Every hour a fresh DB + uploads snapshot\" rgb(176,183,196) on rgb(96,165,250) [text-xs text-muted mt-0.5]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "superAdmin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "components",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "users",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "history",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "admin",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "manager",
+    "theme": "dark",
+    "screen": "dashboard",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "manager",
+    "theme": "dark",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "manager",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "manager",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "dashboard",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "my-components",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "user",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "request-item",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "components",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "lab-items",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "notifications",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "procurement",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "components",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "allot",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "request-item",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "lab-items",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "history",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "inventory",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "finance",
+    "theme": "dark",
+    "screen": "inventory-items",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "finance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "finance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "dark",
+    "screen": "inventory-items",
+    "kind": "contrast",
+    "detail": "4.42:1 (need 4.5) \"Previous\" rgb(229,231,235) on rgb(26,26,46) [relative inline-flex items-center rounded-md border border-line bg-car]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.13:1 (need 3) \"Stay Connected\" rgb(229,231,235) on rgb(243,244,246) [text-2xl font-bold text-ink mb-3 tracking-tight]"
+  },
+  {
+    "role": "associateFinance",
+    "theme": "dark",
+    "screen": "messages",
+    "kind": "contrast",
+    "detail": "1.83:1 (need 4.5) \"Message your team in real time — pick a \" rgb(176,183,196) on rgb(243,244,246) [text-[15px] font-medium text-muted mb-8 leading-relaxed]"
+  }
+]
