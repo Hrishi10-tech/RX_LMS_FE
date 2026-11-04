@@ -90,6 +90,40 @@ are absent.) Do **not** set `THROTTLE_MULTIPLIER` or `VITE_SHOW_DEMO_LOGINS`.
 Push both to ECR (or wherever your service pulls from). **Do not start the
 backend yet.**
 
+### A3b. Running without Docker (PM2 / plain nginx)
+
+If the backend runs under PM2 (`ecosystem.config.js`) rather than from the
+Dockerfile, two things the Dockerfile did for you must be done by hand.
+
+**Backend** — from the backend folder, with the settings from A2 in `.env`
+there (never committed):
+
+```bash
+npm ci
+npx prisma generate
+npm run build
+npx prisma migrate deploy      # applies the database updates — PM2 does NOT do this on start
+pm2 delete lab-management-backend; pm2 start ecosystem.config.js
+```
+
+Run `npx prisma migrate deploy` only **after** the data copy (A4), never
+against the empty database first. After changing `.env`, use
+`pm2 delete` + `pm2 start` (PM2 caches settings; `pm2 restart` keeps the old
+ones).
+
+**Frontend** — the API address is baked in at build time:
+
+```bash
+VITE_API_BASE_URL=https://api.rxlms.store/api npm ci && VITE_API_BASE_URL=https://api.rxlms.store/api npm run build
+```
+
+(PowerShell: `$env:VITE_API_BASE_URL="https://api.rxlms.store/api"; npm ci; npm run build`.)
+Serve the `dist/` folder with nginx using the repo's `nginx.conf`,
+`security-headers.conf` and `csp.conf`, and in `csp.conf` replace
+`__API_ORIGIN__` with `https://api.rxlms.store wss://api.rxlms.store` — left
+as is, the browser blocks every call to the API. Unknown paths must return
+`index.html` (the shipped `nginx.conf` already does).
+
 ### A4. Move the data (the only downtime, about 15 minutes)
 
 Tell us before you start; we warn the users.

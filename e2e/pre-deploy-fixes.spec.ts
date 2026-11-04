@@ -1280,3 +1280,39 @@ test('a stock change always carries a reason, and Item History keeps it', async 
     dropFixtures();
   }
 });
+
+/**
+ * 4 Nov: a removal bigger than the unallotted stock sent the clerk to Allot
+ * Items first. Adjust Stock now asks which share it comes from — the pool or
+ * a named project — and that project's allotment goes down with the stock.
+ */
+test('on screen: Adjust Stock takes a removal from a chosen project, and Item History names it', async ({ page, request }) => {
+  const item = createInventoryItemFixture(); // stock 50
+  const project = sql(`SELECT id, name FROM "Project" WHERE "isActive" ORDER BY name LIMIT 1`)[0];
+  sql(`INSERT INTO "InventoryItemProject" ("inventoryItemId", "projectId", "allottedQty") VALUES (${lit(item.id)}, ${lit(project[0]!)}, 48)`);
+  try {
+    const token = await tokenFor(request, ACCOUNTS.inventory);
+    const pool = await request.post(`${API}/inventory/${item.id}/adjust`, { headers: auth(token), data: { quantityChange: -5, reason: 'E2E' } });
+    expect(pool.status(), 'only 2 are unallotted').toBe(400);
+    expect((await pool.json()).message).toContain('Choose the project to take it from');
+
+    await signInAs(page, 'inventory');
+    await page.goto('/inventory/components');
+    await page.getByPlaceholder(/Search/).first().fill(item.name);
+    await page.getByRole('row', { name: new RegExp(item.name) }).getByRole('button', { name: /Adjust stock of/ }).click();
+    const dialog = page.getByRole('dialog', { name: 'Adjust Stock' });
+    await dialog.getByRole('button', { name: /Remove/ }).click();
+    await dialog.getByPlaceholder('0').fill('5');
+    await expect(dialog.getByText('2 free')).toBeVisible();
+    await dialog.getByRole('radio', { name: new RegExp(project[1]!) }).check();
+    await dialog.getByPlaceholder(/physical count correction/).fill('Taken by the CEO for a demo');
+    await dialog.getByRole('button', { name: 'Save Adjustment' }).click();
+
+    await expect.poll(() => sqlValue(`SELECT stock::int::text FROM "InventoryItem" WHERE id = ${lit(item.id)}`), { timeout: 15_000 }).toBe('45');
+    expect(sqlValue(`SELECT "allottedQty"::int::text FROM "InventoryItemProject" WHERE "inventoryItemId" = ${lit(item.id)}`)).toBe('43');
+    expect(sqlValue(`SELECT notes FROM "InventoryEvent" WHERE "inventoryItemId" = ${lit(item.id)} AND "eventType" = 'ADJUSTMENT' ORDER BY "createdAt" DESC LIMIT 1`))
+      .toBe(`Taken by the CEO for a demo — taken from ${project[1]}'s allotment (48 → 43 PCS)`);
+  } finally {
+    dropFixtures();
+  }
+});

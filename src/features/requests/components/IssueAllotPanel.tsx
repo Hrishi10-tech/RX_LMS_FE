@@ -27,8 +27,13 @@ type Row = { projectId: string; projectName: string; allottedQty: number };
 const fmt = (n: number) => (Number.isInteger(n) ? String(n) : String(Math.round(n * 1000) / 1000));
 
 export const IssueAllotPanel = ({
-  itemId, unit, requestProjectId, requestProjectName, stillNeeded, onSaved,
+  itemId, unit, requestProjectId, requestProjectName, stillNeeded, onSaved, purpose = 'issue',
 }: {
+  /**
+   * 'adjust': used by Adjust Stock to free stock for a removal (owner, 4 Nov).
+   * Same moves and numbers, worded for a write-off instead of a request.
+   */
+  purpose?: 'issue' | 'adjust';
   itemId: string;
   unit: string;
   /** The request's project; null for General / Others (draws on the unallotted pool only). */
@@ -139,7 +144,9 @@ export const IssueAllotPanel = ({
         donors.length ? (
           <>
             <p className="text-xs font-bold text-ink">
-              Short by {fmt(shortBy)} {unit} — take it from a project holding this item:
+              {purpose === 'adjust'
+                ? <>Unallotted is short by {fmt(shortBy)} {unit} — free it from a project:</>
+                : <>Short by {fmt(shortBy)} {unit} — take it from a project holding this item:</>}
             </p>
             <ul className="space-y-1.5">
               {donors.map((d) => {
@@ -162,10 +169,14 @@ export const IssueAllotPanel = ({
             </ul>
           </>
         ) : (
-          <p className="text-xs text-muted">No other project holds this item, so there is nothing to move — the back-order indent covers it.</p>
+          <p className="text-xs text-muted">
+            {purpose === 'adjust'
+              ? 'No project holds this item, so there is nothing to free.'
+              : 'No other project holds this item, so there is nothing to move — the back-order indent covers it.'}
+          </p>
         )
       ) : (
-        <p className="text-xs text-muted">This request already has enough to issue.</p>
+        <p className="text-xs text-muted">{purpose === 'adjust' ? 'Enough is unallotted for this removal.' : 'This request already has enough to issue.'}</p>
       )}
 
       <button type="button" onClick={() => setEditing((v) => !v)} className="text-[11px] font-bold text-muted hover:text-brand">
@@ -204,7 +215,9 @@ export const IssueAllotPanel = ({
               </p>
             ) : (
               <p className="text-[11px] text-muted">
-                This request can then get <span className="font-bold text-ink">{fmt(Math.min(forThisRequest, stillNeeded))}</span> of the {fmt(stillNeeded)} it needs.
+                {purpose === 'adjust'
+                  ? <>Unallotted after saving: <span className="font-bold text-ink">{fmt(unallotted)}</span> {unit}</>
+                  : <>This request can then get <span className="font-bold text-ink">{fmt(Math.min(forThisRequest, stillNeeded))}</span> of the {fmt(stillNeeded)} it needs.</>}
               </p>
             )}
             <button
